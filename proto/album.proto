@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package album;
+option go_package = "proto/album";
+
+message CreateAlbumRequest {
+    string title = 1;
+    string artist = 2;
+    string releaseDate = 3;
+}
+
+message GetAlbumRequest {
+    string id = 1;
+}
+
+message AlbumGeneralResponse {
+    string message = 1;
+}
+
+message GetAlbumResponse {
+    string message = 1;
+    CreateAlbumRequest album = 2;
+}
+
+service AlbumService {
+    rpc CreateAlbum(CreateAlbumRequest) returns (AlbumGeneralResponse);
+    rpc GetAlbum(GetAlbumRequest) returns (GetAlbumResponse);
+}
