@@ -3,8 +3,8 @@ package server
 import (
 	"context"
 
-	album "leoho.io/grpc-go-example/album"
 	pb "leoho.io/grpc-go-example/proto"
+	album "leoho.io/grpc-go-example/server/controllers/album"
 )
 
 type Server struct {
