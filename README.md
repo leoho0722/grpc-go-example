@@ -20,6 +20,14 @@ brew install protoc-gen-go
 
 ## Run
 
+### Server side
+
 ```shell
 go run main.go
+```
+
+### Client side
+
+```shell
+go run client/client.go
 ```
