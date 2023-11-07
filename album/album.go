@@ -11,9 +11,9 @@ import (
 func CreateAlbum(ctx context.Context, req *pb.CreateAlbumRequest) (result *pb.AlbumGeneralResponse, err error) {
 	err = db.Create(&db.Album{
 		Id:          uuid.New().String(),
-		Title:       req.Title,
-		Artist:      req.Artist,
-		ReleaseDate: req.ReleaseDate,
+		Title:       req.Album.Title,
+		Artist:      req.Album.Artist,
+		ReleaseDate: req.Album.ReleaseDate,
 	})
 	if err != nil {
 		return &pb.AlbumGeneralResponse{
@@ -36,7 +36,7 @@ func GetAlbum(ctx context.Context, req *pb.GetAlbumRequest) (result *pb.GetAlbum
 	} else {
 		return &pb.GetAlbumResponse{
 			Message: "Get album success",
-			Album: &pb.CreateAlbumRequest{
+			Album: &pb.Album{
 				Id:          &album.Id,
 				Title:       album.Title,
 				Artist:      album.Artist,
@@ -54,9 +54,9 @@ func GetAlbums(ctx context.Context, req *pb.GetAlbumsRequest) (result *pb.GetAlb
 			Message: "Get albums failed",
 		}, err
 	} else {
-		var albumResponses []*pb.CreateAlbumRequest
+		var albumResponses []*pb.Album
 		for _, album := range albums {
-			albumResponses = append(albumResponses, &pb.CreateAlbumRequest{
+			albumResponses = append(albumResponses, &pb.Album{
 				Id:          &album.Id,
 				Title:       album.Title,
 				Artist:      album.Artist,

@@ -29,16 +29,18 @@ func main() {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
 
-	// createAlbum(ctx, client)
-	// getAlbum("2a897be8-2c7c-49bd-b05a-d92a8a1cbfbc", ctx, client)
+	createAlbum(ctx, client)
+	getAlbum("fc894cc0-8a08-47b2-87d9-156fdcc4c96c", ctx, client)
 	getAlbums(ctx, client)
 }
 
 func createAlbum(ctx context.Context, client pb.AlbumServiceClient) {
 	response, err := client.CreateAlbum(ctx, &pb.CreateAlbumRequest{
-		Title:       "RINGO",
-		Artist:      "ITZY",
-		ReleaseDate: "2023/10/18",
+		Album: &pb.Album{
+			Title:       "RINGO",
+			Artist:      "ITZY",
+			ReleaseDate: "2023/10/18",
+		},
 	})
 	if err != nil {
 		log.Fatalf("could not create album: %v", err)
