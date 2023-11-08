@@ -1,5 +1,5 @@
 # 系統架構，amd64 或 arm64
-ARCH ?= amd64
+ARCH ?= arm64
 
 .PHONY: proto-gen-go
 proto-gen-go:
@@ -18,3 +18,11 @@ else
 	--go-grpc_opt=paths=source_relative \
 	proto/*.proto
 endif
+
+.PHONY: run-server:
+run-server:
+	go run main.go
+
+.PHONY: run-client:
+run-client:
+	go run client/client.go

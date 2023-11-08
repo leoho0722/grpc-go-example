@@ -26,8 +26,20 @@ brew install protoc-gen-go
 go run main.go
 ```
 
+or
+
+```shell
+make run-server
+```
+
 ### Client side
 
 ```shell
 go run client/client.go
+```
+
+or
+
+```shell
+make run-client
 ```
