@@ -19,10 +19,10 @@ else
 	proto/*.proto
 endif
 
-.PHONY: run-server:
+.PHONY: run-server
 run-server:
 	go run main.go
 
-.PHONY: run-client:
+.PHONY: run-client
 run-client:
 	go run client/client.go
