@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"time"
 
@@ -13,7 +14,7 @@ import (
 
 func main() {
 	connect, err := grpc.Dial(
-		":50051",
+		fmt.Sprintf("%s:%d", "0.0.0.0", 8000),
 		grpc.WithTransportCredentials(
 			insecure.NewCredentials(),
 		),
