@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net"
 
@@ -14,7 +15,7 @@ import (
 func main() {
 	db.ConnectDB()
 
-	lis, err := net.Listen("tcp", ":50051")
+	lis, err := net.Listen("tcp", fmt.Sprintf("%s:%d", "0.0.0.0", 8000))
 	if err != nil {
 		log.Fatalf("Failed to listen: %v", err)
 	}
